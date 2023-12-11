@@ -1,0 +1,37 @@
+package com.starorigins.crypstocks.ui.components
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.starorigins.crypstocks.ui.theme.CrypStocksTheme
+
+
+@Composable
+fun SectionTitle(
+    text: String,
+    modifier: Modifier = Modifier
+) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.titleLarge,
+        modifier = modifier.padding(start = 24.dp, bottom = 4.dp, top = 24.dp)
+    )
+}
+
+@Preview
+@Composable
+fun SectionTitlePreview() {
+    CrypStocksTheme {
+        Surface {
+            Box(modifier = Modifier.padding(8.dp)) {
+                SectionTitle(text = "The section")
+            }
+        }
+    }
+}
