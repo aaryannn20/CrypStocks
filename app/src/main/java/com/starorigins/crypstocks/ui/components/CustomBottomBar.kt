@@ -54,7 +54,7 @@ fun CustomBottomBar(
     onDestinationSelected: (RootDestination) -> Unit,
     destinations: List<RootDestination>,
     modifier: Modifier = Modifier,
-    backgroundColor: Color = MaterialTheme.colorScheme.primary,
+    backgroundColor: Color = Color.White,
     indicatorColor: Color = MaterialTheme.colorScheme.secondary,
     unselectedColor: Color = contentColorFor(backgroundColor),
     selectedColor: Color = contentColorFor(indicatorColor)

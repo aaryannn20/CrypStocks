@@ -49,7 +49,7 @@ val typography = Typography(
     labelMedium = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.W300,
-        letterSpacing = 12.sp
+        letterSpacing = 1.25.sp
     ),
     bodyLarge = TextStyle(
         fontFamily = Inter,
