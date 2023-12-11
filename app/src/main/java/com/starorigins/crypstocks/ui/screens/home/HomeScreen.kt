@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.starorigins.crypstocks.ui.screens.home
 
 
@@ -15,12 +13,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Text
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
@@ -111,9 +108,9 @@ private fun SearchField(
             singleLine = true,
             label = { Text(stringResource(id = R.string.search_field_label)) },
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                cursorColor = MaterialTheme.colorScheme.onBackground,
-                focusedBorderColor = MaterialTheme.colorScheme.onSurface,
-                focusedLabelColor = MaterialTheme.colorScheme.onSurface
+                cursorColor = MaterialTheme.colors.onBackground,
+                focusedBorderColor = MaterialTheme.colors.onSurface,
+                focusedLabelColor = MaterialTheme.colors.onSurface
             ),
             leadingIcon = {
                 Icon(

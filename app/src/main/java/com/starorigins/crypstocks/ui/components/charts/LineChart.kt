@@ -6,7 +6,7 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.Canvas
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
@@ -45,9 +45,9 @@ fun LineChart(
     lineDrawer: LineDrawer = SolidLineDrawer(),
     xAxisDrawer: XAxisDrawer = SimpleXAxisDrawer(),
     yAxisDrawer: YAxisDrawer = SimpleYAxisDrawer(),
-    profitColor: Color = MaterialTheme.colorScheme.profit,
-    lossColor: Color = MaterialTheme.colorScheme.loss,
-    neutralColor: Color = MaterialTheme.colorScheme.onPrimary,
+    profitColor: Color = MaterialTheme.colors.profit,
+    lossColor: Color = MaterialTheme.colors.loss,
+    neutralColor: Color = MaterialTheme.colors.onPrimary,
 ) {
     // Used to represent the data currently being charted
     var visibleData by remember { mutableStateOf(lineChartData) }

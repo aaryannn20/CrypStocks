@@ -5,8 +5,8 @@ import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -30,6 +30,6 @@ fun LoadingIndicator(modifier: Modifier = Modifier) {
             )
         }
 
-        CircularProgressIndicator(color = MaterialTheme.colorScheme.secondary, modifier = Modifier.alpha(alpha.value))
+        CircularProgressIndicator(color = MaterialTheme.colors.secondary, modifier = Modifier.alpha(alpha.value))
     }
 }

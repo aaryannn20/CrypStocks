@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.starorigins.crypstocks.ui
 
 import androidx.compose.animation.AnimatedVisibility
@@ -14,9 +12,8 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -57,7 +54,7 @@ fun CrypStocksApp(settings: SettingsDataStore) {
 
     ProvideWindowInsets(windowInsetsAnimationsEnabled = true) {
         CrypStocksTheme(darkTheme = darkMode) {
-            val colors = MaterialTheme.colorScheme
+            val colors = MaterialTheme.colors
             val currentScreen = Screen.listScreens().fastFirstOrNull {
                 it.route == navBackStackEntry?.destination?.route
             }

@@ -15,9 +15,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.contentColorFor
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -39,8 +39,8 @@ fun CustomChartRangeSelector(
     onRangeSelected: (ChartRange) -> Unit,
     ranges: List<ChartRange>,
     modifier: Modifier = Modifier,
-    indicatorColor: Color = MaterialTheme.colorScheme.secondary,
-    unselectedColor: Color = MaterialTheme.colorScheme.onBackground,
+    indicatorColor: Color = MaterialTheme.colors.secondary,
+    unselectedColor: Color = MaterialTheme.colors.onBackground,
     selectedColor: Color = contentColorFor(indicatorColor)
 ) {
     val springSpec = remember { SpringSpec<Float>(stiffness = 300f) }
@@ -62,7 +62,7 @@ fun CustomChartRangeSelector(
                     Text(
                         text = stringResource(range.uiStringResource),
                         color = tint,
-                        style = MaterialTheme.typography.displaySmall.copy(fontSize = 16.sp),
+                        style = MaterialTheme.typography.button.copy(fontSize = 16.sp),
                         maxLines = 1,
                         modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp)
                     )
@@ -79,7 +79,7 @@ fun CustomChartRangeSelector(
 private fun CustomChartRangeItem(
     content: @Composable BoxScope.() -> Unit,
     modifier: Modifier = Modifier,
-    color: Color = MaterialTheme.colorScheme.secondary,
+    color: Color = MaterialTheme.colors.secondary,
     shape: Shape = IndicatorShape,
     selected: Boolean,
     onSelected: () -> Unit,

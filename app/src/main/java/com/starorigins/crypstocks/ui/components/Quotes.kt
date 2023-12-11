@@ -16,10 +16,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material.LocalContentColor
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -65,12 +65,12 @@ fun QuoteListItem(
         ) {
             Text(
                 text = quote.symbol,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.h5
             )
             Spacer(Modifier.height(4.dp))
             Text(
                 text = quote.companyName,
-                style = MaterialTheme.typography.labelMedium,
+                style = MaterialTheme.typography.subtitle2,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -84,7 +84,7 @@ fun QuoteListItem(
         ) {
             Text(
                 text = "%.2f".format(quote.latestPrice),
-                style = MaterialTheme.typography.titleSmall,
+                style = MaterialTheme.typography.h6,
                 textAlign = TextAlign.End
             )
             QuoteChange(
@@ -138,12 +138,12 @@ fun QuoteWithChartCard(
         ) {
             Text(
                 text = quote.symbol,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.h5
             )
             Spacer(Modifier.height(4.dp))
             Text(
                 text = quote.companyName,
-                style = MaterialTheme.typography.labelMedium,
+                style = MaterialTheme.typography.subtitle2,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -175,7 +175,7 @@ fun QuoteWithChartCard(
             ) {
                 Text(
                     text = "%.2f".format(quote.latestPrice),
-                    style = MaterialTheme.typography.titleSmall,
+                    style = MaterialTheme.typography.h6,
                     textAlign = TextAlign.End
                 )
                 val change = with(chartData.points) { (last().value - first().value) / first().value }.toDouble()
@@ -195,8 +195,8 @@ private fun QuoteChange(
     modifier: Modifier = Modifier
 ) {
     val changeColor = when (sign) {
-        -1.0 -> MaterialTheme.colorScheme.loss
-        1.0 -> MaterialTheme.colorScheme.profit
+        -1.0 -> MaterialTheme.colors.loss
+        1.0 -> MaterialTheme.colors.profit
         else -> LocalContentColor.current.copy(alpha = 0.38f)
     }
     val backgroundModifier = modifier.background(
@@ -206,7 +206,7 @@ private fun QuoteChange(
     Box(modifier = backgroundModifier.padding(horizontal = 2.dp)) {
         Text(
             text = "${"%+.2f".format(changePercent * 100)}%",
-            style = MaterialTheme.typography.labelLarge.copy(fontSize = 14.sp),
+            style = MaterialTheme.typography.subtitle1.copy(fontSize = 14.sp),
             textAlign = TextAlign.End,
             color = changeColor
         )

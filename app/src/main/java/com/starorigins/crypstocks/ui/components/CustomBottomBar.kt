@@ -16,11 +16,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.contentColorFor
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -54,14 +54,14 @@ fun CustomBottomBar(
     onDestinationSelected: (RootDestination) -> Unit,
     destinations: List<RootDestination>,
     modifier: Modifier = Modifier,
-    backgroundColor: Color = Color.White,
-    indicatorColor: Color = MaterialTheme.colorScheme.secondary,
+    backgroundColor: Color = MaterialTheme.colors.primary,
+    indicatorColor: Color = MaterialTheme.colors.secondary,
     unselectedColor: Color = contentColorFor(backgroundColor),
     selectedColor: Color = contentColorFor(indicatorColor)
 ) {
     Surface(
         color = backgroundColor,
-        shadowElevation = 8.dp,
+        elevation = 8.dp,
         modifier = modifier.fillMaxWidth()
     ) {
         val springSpec = remember { SpringSpec<Float>(stiffness = 300f) }
@@ -95,7 +95,7 @@ fun CustomBottomBar(
                             Text(
                                 text = stringResource(section.title),
                                 color = tint,
-                                style = MaterialTheme.typography.displaySmall,
+                                style = MaterialTheme.typography.button,
                                 maxLines = 1
                             )
                         },
@@ -177,7 +177,7 @@ private fun CustomBottomBarItem(
     icon: @Composable BoxScope.() -> Unit,
     text: @Composable BoxScope.() -> Unit,
     modifier: Modifier = Modifier,
-    color: Color = MaterialTheme.colorScheme.secondary,
+    color: Color = MaterialTheme.colors.secondary,
     shape: Shape = IndicatorShape,
     selected: Boolean,
     onSelected: () -> Unit,

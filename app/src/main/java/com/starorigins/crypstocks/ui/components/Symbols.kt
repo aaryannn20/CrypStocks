@@ -13,9 +13,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -52,12 +52,12 @@ fun SymbolListItem(
         ) {
             Text(
                 text = symbol.symbol,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.h5
             )
             Spacer(Modifier.height(4.dp))
             Text(
                 text = "${stringResource(symbol.type.uiStringResource)} - ${symbol.region}",
-                style = MaterialTheme.typography.labelMedium,
+                style = MaterialTheme.typography.subtitle2,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )

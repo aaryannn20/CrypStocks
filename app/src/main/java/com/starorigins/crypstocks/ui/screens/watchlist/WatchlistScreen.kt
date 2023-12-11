@@ -10,9 +10,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
@@ -108,7 +108,7 @@ private fun EmptyUserTrackedSymbols(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.width(8.dp))
         Text(
             text = stringResource(id = R.string.user_symbols_section_suggestion),
-            style = MaterialTheme.typography.titleSmall.copy(fontSize = 18.sp)
+            style = MaterialTheme.typography.h6.copy(fontSize = 18.sp)
         )
     }
 }

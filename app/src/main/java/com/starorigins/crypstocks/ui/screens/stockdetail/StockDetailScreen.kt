@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.starorigins.crypstocks.ui.screens.stockdetail
 
 import android.app.Activity
@@ -19,17 +17,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material.AppBarDefaults
+import androidx.compose.material.Card
+import androidx.compose.material.Divider
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalContentColor
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
@@ -46,6 +44,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
+import com.google.accompanist.insets.statusBarsPadding
 import com.starorigins.crypstocks.MainActivity
 import com.starorigins.crypstocks.R
 import com.starorigins.crypstocks.data.model.CompanyInfo
@@ -61,7 +60,6 @@ import com.starorigins.crypstocks.ui.components.charts.graph.xaxis.NoXAxisDrawer
 import com.starorigins.crypstocks.ui.components.charts.graph.yaxis.NoYAxisDrawer
 import com.starorigins.crypstocks.ui.theme.loss
 import com.starorigins.crypstocks.ui.theme.profit
-import com.google.accompanist.insets.statusBarsPadding
 import dagger.hilt.android.EntryPointAccessors
 import kotlin.math.sign
 
@@ -138,8 +136,8 @@ fun StockDetailTopBar(
     onTrackButtonPressed: () -> Unit,
 ) {
     Surface(
-        shadowElevation = 4.dp,
-        color = MaterialTheme.colorScheme.primary,
+        elevation = AppBarDefaults.TopAppBarElevation,
+        color = MaterialTheme.colors.primary,
         modifier = Modifier
             .statusBarsPadding()
             .fillMaxWidth()
@@ -148,8 +146,7 @@ fun StockDetailTopBar(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(start = 4.dp,
-                    end = 4.dp)
+                .padding(AppBarDefaults.ContentPadding)
         ) {
             IconButton(
                 modifier = Modifier.align(Alignment.CenterStart),
@@ -163,7 +160,7 @@ fun StockDetailTopBar(
             Text(
                 text = symbol,
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.h5,
                 modifier = Modifier.align(Alignment.Center)
             )
             IconButton(
@@ -197,15 +194,15 @@ fun PriceSection(
     ) {
         Text(
             text = priceString,
-            style = MaterialTheme.typography.headlineLarge,
+            style = MaterialTheme.typography.h3,
             textAlign = TextAlign.End
         )
         Spacer(Modifier.height(4.dp))
 
         val changeColor = when (change.sign) {
-            -1.0 -> MaterialTheme.colorScheme.loss
-            1.0 -> MaterialTheme.colorScheme.profit
-            else -> LocalContentColor.current.copy(alpha = 0.38f)
+            -1.0 -> MaterialTheme.colors.loss
+            1.0 -> MaterialTheme.colors.profit
+            else -> LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
         }
         val backgroundModifier = Modifier.background(
             shape = MaterialTheme.shapes.small,
@@ -214,7 +211,7 @@ fun PriceSection(
         Box(modifier = backgroundModifier.padding(horizontal = 3.dp)) {
             Text(
                 text = "${"%+.2f".format(change * 100)}%",
-                style = MaterialTheme.typography.labelLarge.copy(fontSize = 14.sp),
+                style = MaterialTheme.typography.subtitle1.copy(fontSize = 14.sp),
                 textAlign = TextAlign.End,
                 color = changeColor
             )
@@ -284,7 +281,7 @@ fun CompanyInfoSection(
 private fun CompanyInfo(symbol: String, companyInfo: CompanyInfo, quote: Quote) {
     Card(
         modifier = Modifier.padding(horizontal = 12.dp),
-        elevation = CardDefaults.cardElevation(4.dp)
+        elevation = 4.dp
     ) {
         Column(
             modifier = Modifier
@@ -333,7 +330,7 @@ private fun CompanyNameAndLogo(symbol: String, companyName: String) {
         )
         Text(
             text = companyName,
-            style = MaterialTheme.typography.bodyLarge.copy(fontSize = 18.sp),
+            style = MaterialTheme.typography.body1.copy(fontSize = 18.sp),
             modifier = Modifier.padding(start = 12.dp)
         )
     }
@@ -352,13 +349,13 @@ private fun InfoItem(label: String, content: String?) {
     ) {
         Text(
             text = label,
-            style = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.body2,
             maxLines = 1
         )
         Spacer(modifier = Modifier.width(24.dp))
         Text(
             text = if (!content.isNullOrBlank()) content else "-",
-            style = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.body2,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )

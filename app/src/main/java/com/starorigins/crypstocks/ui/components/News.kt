@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalAnimationApi::class, ExperimentalMaterial3Api::class)
-
 package com.starorigins.crypstocks.ui.components
 
 import androidx.compose.animation.AnimatedContent
@@ -32,12 +30,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -107,13 +103,14 @@ fun NewsListItem(
         label = "cardColorTransition"
     ) { state ->
         when (state) {
-            ListItemState.Collapsed -> MaterialTheme.colorScheme.background
-            ListItemState.Expanded -> MaterialTheme.colorScheme.surface
+            ListItemState.Collapsed -> MaterialTheme.colors.background
+            ListItemState.Expanded -> MaterialTheme.colors.surface
         }
     }
 
     Card(
-        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
+        elevation = cardElevation,
+        backgroundColor = cardColor,
         modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
@@ -176,7 +173,7 @@ private fun NewsExpandedHeadline(
         ) {
             Text(
                 text = headline,
-                style = MaterialTheme.typography.titleSmall,
+                style = MaterialTheme.typography.h6,
                 modifier = Modifier
                     .padding(bottom = 8.dp)
                     .fillMaxWidth()
@@ -232,7 +229,7 @@ private fun NewsImage(
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
                 .alpha(readMoreAlpha)
-                .background(color = MaterialTheme.colorScheme.surface)
+                .background(color = MaterialTheme.colors.surface)
                 .run {
                     if (readMoreClickable) clickable(onClick = onReadMoreClicked) else this
                 }
@@ -241,7 +238,7 @@ private fun NewsImage(
             Text(
                 text = stringResource(R.string.read_more_button),
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.labelLarge.copy(fontSize = 12.sp),
+                style = MaterialTheme.typography.subtitle1.copy(fontSize = 12.sp),
                 textDecoration = TextDecoration.Underline,
                 modifier = Modifier.fillMaxWidth()
             )
@@ -265,13 +262,13 @@ private fun NewsContent(
                 text = headline,
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis,
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.body1
             )
             ListItemState.Expanded -> Text(
                 text = summary,
                 maxLines = 8,
                 overflow = TextOverflow.Ellipsis,
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.body2
             )
         }
 
@@ -295,7 +292,7 @@ private fun NewsFoot(
     with(columnScope) {
         Text(
             text = "$source - $dateString",
-            style = MaterialTheme.typography.labelMedium,
+            style = MaterialTheme.typography.subtitle2,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             textAlign = TextAlign.End,

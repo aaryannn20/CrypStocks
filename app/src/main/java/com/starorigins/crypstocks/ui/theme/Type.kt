@@ -1,6 +1,6 @@
 package com.starorigins.crypstocks.ui.theme
 
-import androidx.compose.material3.Typography
+import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -21,56 +21,55 @@ val Inter = FontFamily(
 )
 
 val typography = Typography(
-    headlineLarge = TextStyle(
+    h3 = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.W600,
         fontSize = 38.sp
     ),
-    titleLarge = TextStyle(
+    h4 = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.W800,
         fontSize = 24.sp
     ),
-    titleMedium = TextStyle(
+    h5 = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.W600,
         fontSize = 20.sp
     ),
-    titleSmall = TextStyle(
+    h6 = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.W400,
         fontSize = 20.sp
     ),
-    labelLarge = TextStyle(
+    subtitle1 = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.W500,
         fontSize = 14.sp
     ),
-    labelMedium = TextStyle(
+    subtitle2 = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.W300,
-        letterSpacing = 1.25.sp
+        fontSize = 12.sp
     ),
-    bodyLarge = TextStyle(
+    body1 = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.W400,
         fontSize = 16.sp
     ),
-    bodyMedium = TextStyle(
+    body2 = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.W400,
         fontSize = 14.sp
     ),
-    displaySmall = TextStyle(
+    button = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.W500,
         fontSize = 14.sp,
         letterSpacing = 1.25.sp
     ),
-     labelSmall = TextStyle(
+    caption = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.W400,
         fontSize = 12.sp
     )
 )
-
