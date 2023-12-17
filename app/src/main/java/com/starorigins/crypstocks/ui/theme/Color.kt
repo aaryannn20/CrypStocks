@@ -9,3 +9,5 @@ val offBlack = Color(0xFF101010)
 
 val green = Color(0xFF56B49C)
 val red = Color(0xFFE25837)
+
+val PrimaryColor =  Color(0xffff6200)

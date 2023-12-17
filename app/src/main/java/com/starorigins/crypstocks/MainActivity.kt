@@ -30,7 +30,6 @@ class MainActivity : ComponentActivity() {
 
         // Manually handle insets
         WindowCompat.setDecorFitsSystemWindows(window, false)
-
         setContent {
             CrypStocksApp(settings)
         }
