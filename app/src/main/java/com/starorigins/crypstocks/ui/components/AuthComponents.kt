@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -32,6 +33,9 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -49,6 +53,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -138,6 +144,45 @@ fun ContactField(labelValue : String, leadIcon : Painter) {
 }
 
 @Composable
+fun PasswordField(labelValue : String, leadIcon: Painter) {
+    var password by remember {
+        mutableStateOf("")
+    }
+    TextField(
+        value = password,
+        onValueChange = { password = it },
+        placeholder = {
+            Text(
+                text = labelValue,
+                color = Color(0xff212121),
+                style = TextStyle(
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            )
+        },
+        leadingIcon = { Icon(painter = leadIcon, contentDescription = "") },
+        colors = TextFieldDefaults.textFieldColors(
+            textColor = PrimaryColor,
+            backgroundColor = Color.White,
+            leadingIconColor = Color.Black,
+            focusedIndicatorColor = PrimaryColor,
+            focusedLabelColor = PrimaryColor,
+            cursorColor = PrimaryColor,
+        ),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        modifier = Modifier
+            .fillMaxWidth()
+            .shadow(
+                elevation = 10.dp,
+                shape = RoundedCornerShape(14.dp)
+            ),
+        visualTransformation = PasswordVisualTransformation(),
+        shape = RoundedCornerShape(14.dp),
+    )
+}
+
+@Composable
 fun MyCheckbox(modifier: Modifier = Modifier) {
     val checkedState = remember { mutableStateOf(false) }
 
@@ -149,7 +194,7 @@ fun MyCheckbox(modifier: Modifier = Modifier) {
         Checkbox(
             checked = checkedState.value,
             onCheckedChange = { checkedState.value = it },
-            modifier = Modifier,
+            modifier = Modifier.absolutePadding(right = 12.dp),
             colors = CheckboxDefaults.colors(
                 checkedColor = PrimaryColor,
                 uncheckedColor = PrimaryColor
@@ -191,7 +236,25 @@ fun RegisterButton() {
         ),
         shape = RoundedCornerShape(14.dp)
     ) {
-        Text(text = "Register", style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold))
+        Text(text = "Register", style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.White))
+    }
+}
+
+@Composable
+fun LoginButton() {
+    Button(
+        onClick = { /*TODO*/ },
+        modifier = Modifier
+            .height(50.dp)
+            .fillMaxWidth()
+            .clickable { },
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = PrimaryColor
+        ),
+        elevation = ButtonDefaults.elevation(defaultElevation = 10.dp),
+        shape = RoundedCornerShape(14.dp)
+    ) {
+        Text(text = "Login", style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.White))
     }
 }
 
@@ -203,6 +266,26 @@ fun RouteLoginScreen() {
                 color = Color.Black,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Medium)) {append("Already have ")}
+            withStyle(style = SpanStyle(
+                color = Color(0xffff6200),
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold)) {append("an account")}
+            withStyle(style = SpanStyle(
+                color = Color.Black,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold)) {append("?")}},
+        onClick = {}
+    )
+}
+
+@Composable
+fun RouteSignUpScreen() {
+    ClickableText(
+        text = buildAnnotatedString {
+            withStyle(style = SpanStyle(
+                color = Color.Black,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Medium)) {append("Don't have ")}
             withStyle(style = SpanStyle(
                 color = Color(0xffff6200),
                 fontSize = 16.sp,
@@ -334,8 +417,7 @@ fun DefaultPreviewSystem() {
             ContactField(labelValue = "Contact", leadIcon = painterResource(id = R.drawable.contact))
             MyCheckbox()
             DirectLoginFacilityRow()
+            PasswordField(labelValue = "Password", leadIcon = painterResource(id = R.drawable.password))
         }
     }
-
-
 }
