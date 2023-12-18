@@ -75,7 +75,7 @@ interface IEXService {
                                 // Add the API token to the request
                                 val originalRequest = chain.request()
                                 val urlWithToken = originalRequest.url.newBuilder()
-                                    .addQueryParameter("token", "pk_2c23e8a7802041ca83b33d34af37ba76")
+                                    .addQueryParameter("token", "pk_9033ed19d2744bfd8c6a7b8889aec01a")
                                     .build()
                                 val requestWithToken = originalRequest.newBuilder()
                                     .url(urlWithToken)

@@ -9,8 +9,8 @@ import java.time.LocalDate
 @JsonClass(generateAdapter = true)
 data class SymbolResponse(
     // https://iexcloud.io/docs/api/#symbols
-    @Json(name = "symbol") val symbol: String,
-    @Json(name = "name") val name: String,
+    @Json(name = "displaySymbol") val symbol: String,
+    @Json(name = "description") val name: String,
     @Json(name = "date") val creationDate: LocalDate,
     @Json(name = "type") val type: SymbolType,
     @Json(name = "region") val region: String,
