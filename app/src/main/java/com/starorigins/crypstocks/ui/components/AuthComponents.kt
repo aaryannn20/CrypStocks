@@ -68,13 +68,15 @@ fun LogoContainer(image: Painter) {
 }
 
 @Composable
-fun MyTextField(labelValue : String, leadIcon : Painter) {
+fun MyTextField(labelValue : String, leadIcon : Painter, onInput : (String) -> Unit) {
     var username by remember {
         mutableStateOf("")
     }
     TextField(
         value = username,
-        onValueChange = {username = it},
+        onValueChange = {
+            username = it
+            onInput(it) },
         placeholder = {
             Text(
                 text = labelValue,
@@ -105,13 +107,14 @@ fun MyTextField(labelValue : String, leadIcon : Painter) {
 }
 
 @Composable
-fun ContactField(labelValue : String, leadIcon : Painter) {
+fun ContactField(labelValue : String, leadIcon : Painter, onInput : (String) -> Unit) {
     var contact by remember {
         mutableStateOf("")
     }
     TextField(
         value = contact,
-        onValueChange = {contact = it},
+        onValueChange = {contact = it
+                        onInput(it)},
         placeholder = {
             Text(
                 text = labelValue,
@@ -144,13 +147,15 @@ fun ContactField(labelValue : String, leadIcon : Painter) {
 }
 
 @Composable
-fun PasswordField(labelValue : String, leadIcon: Painter) {
+fun PasswordField(labelValue : String, leadIcon: Painter, onInput: (String) -> Unit) {
     var password by remember {
         mutableStateOf("")
     }
     TextField(
         value = password,
-        onValueChange = { password = it },
+        onValueChange = {
+            password = it
+            onInput(it)            },
         placeholder = {
             Text(
                 text = labelValue,
@@ -224,9 +229,9 @@ fun MyCheckbox(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun RegisterButton() {
+fun RegisterButton(onButtonClicked : () -> Unit) {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = { onButtonClicked.invoke()},
         modifier = Modifier
             .height(50.dp)
             .fillMaxWidth()
@@ -234,6 +239,7 @@ fun RegisterButton() {
         colors = ButtonDefaults.buttonColors(
             backgroundColor = PrimaryColor
         ),
+        elevation = ButtonDefaults.elevation(defaultElevation = 10.dp),
         shape = RoundedCornerShape(14.dp)
     ) {
         Text(text = "Register", style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.White))
@@ -241,9 +247,9 @@ fun RegisterButton() {
 }
 
 @Composable
-fun LoginButton() {
+fun LoginButton(onButtonClicked : () -> Unit) {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = { onButtonClicked.invoke()},
         modifier = Modifier
             .height(50.dp)
             .fillMaxWidth()
@@ -413,11 +419,11 @@ fun DirectLoginFacilityRow() {
 fun DefaultPreviewSystem() {
     androidx.compose.material.Surface(modifier = Modifier.fillMaxSize()) {
         Column {
-            MyTextField(labelValue = "Full Name", leadIcon = painterResource(id = R.drawable.profile))
-            ContactField(labelValue = "Contact", leadIcon = painterResource(id = R.drawable.contact))
+            MyTextField(labelValue = "Full Name", leadIcon = painterResource(id = R.drawable.profile), onInput = {})
+            ContactField(labelValue = "Contact", leadIcon = painterResource(id = R.drawable.contact), onInput = {})
             MyCheckbox()
             DirectLoginFacilityRow()
-            PasswordField(labelValue = "Password", leadIcon = painterResource(id = R.drawable.password))
+            PasswordField(labelValue = "Password", leadIcon = painterResource(id = R.drawable.password), onInput = {})
         }
     }
 }
