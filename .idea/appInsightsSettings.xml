@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.starorigins.crypstocks" />
-                  <option name="mobileSdkAppId" value="1:528331822219:android:a1c68c018d74fd9a11708e" />
-                  <option name="projectId" value="crypstocks-afc33" />
-                  <option name="projectNumber" value="528331822219" />
+                  <option name="appId" value="PLACEHOLDER" />
+                  <option name="mobileSdkAppId" value="" />
+                  <option name="projectId" value="" />
+                  <option name="projectNumber" value="" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

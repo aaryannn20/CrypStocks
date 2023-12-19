@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.starorigins.crypstocks.R
 import com.starorigins.crypstocks.ui.components.DirectLoginFacilityRow
 import com.starorigins.crypstocks.ui.components.DividerComponent
@@ -22,7 +21,7 @@ import com.starorigins.crypstocks.ui.components.PasswordField
 import com.starorigins.crypstocks.ui.components.RouteSignUpScreen
 
 @Composable
-fun LoginScreen(loginViewModel: UserAuthViewModel = viewModel()) {
+fun LoginScreen() {
     Surface(modifier = Modifier
         .fillMaxSize()
     ) {
@@ -30,26 +29,11 @@ fun LoginScreen(loginViewModel: UserAuthViewModel = viewModel()) {
             Spacer(modifier = Modifier.height(10.dp))
             LogoContainer(image = painterResource(id = R.drawable.logo))
             Spacer(modifier = Modifier.height(32.dp))
-            MyTextField(
-                labelValue = "Username",
-                leadIcon = painterResource(id = R.drawable.profile),
-                onInput = {
-                    loginViewModel.onEvent(UserAuthEvents.UserNameChanged(it))
-                }
-            )
+            MyTextField(labelValue = "Username", leadIcon = painterResource(id = R.drawable.profile))
             Spacer(modifier = Modifier.height(28.dp))
-            PasswordField(
-                labelValue = "Password",
-                leadIcon = painterResource(id = R.drawable.password),
-                onInput = {
-                    loginViewModel.onEvent(UserAuthEvents.PasswordChanged(it))
-                }
-            )
+            PasswordField(labelValue = "Password", leadIcon = painterResource(id = R.drawable.password))
             Spacer(modifier = Modifier.height(24.dp))
-            LoginButton(onButtonClicked = {
-                loginViewModel.onEvent(UserAuthEvents.LoginButtonClicked)
-                }
-            )
+            LoginButton()
             Spacer(modifier = Modifier.height(16.dp))
             RouteSignUpScreen()
             Spacer(modifier = Modifier.height(32.dp))

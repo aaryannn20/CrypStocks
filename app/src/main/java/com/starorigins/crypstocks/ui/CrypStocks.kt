@@ -85,6 +85,7 @@ private fun NavigableContent(
     innerPadding: PaddingValues,
     navController: NavHostController
 ) {
+
     NavHost(
         navController = navController,
         startDestination = Screen.StartDestination.route,

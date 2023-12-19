@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "463089130052",
+    "project_id": "crypstocks-54ce6",
+    "storage_bucket": "crypstocks-54ce6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463089130052:android:bc37d170e6283e11103a11",
+        "android_client_info": {
+          "package_name": "com.starorigins.crypstocks"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPFWuWOoELjwo4g1Kpa1RcJtRWYuzUMNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
