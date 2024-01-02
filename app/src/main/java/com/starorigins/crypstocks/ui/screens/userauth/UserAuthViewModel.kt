@@ -3,6 +3,7 @@ package com.starorigins.crypstocks.ui.screens.userauth
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
 import timber.log.Timber
 
 class UserAuthViewModel: ViewModel() {
@@ -11,9 +12,9 @@ class UserAuthViewModel: ViewModel() {
 
     fun onEvent(event:UserAuthEvents) {
         when(event) {
-            is UserAuthEvents.FullNameChanged -> {
+            is UserAuthEvents.EmailChanged -> {
                 userAuthUIState.value = userAuthUIState.value.copy(
-                    FullName = event.FullName
+                    Email = event.Email
                 )
                 printState()
             }
@@ -31,10 +32,31 @@ class UserAuthViewModel: ViewModel() {
             }
         }
     }
-    private fun register() {
 
+    fun createUSerInFirebase(email: String, password: String) {
+        FirebaseAuth.getInstance()
+            .createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener {
+                Log.d("AUTHCOMPLETE","Auth Completed.")
+                Log.d("AUTHSUCCESS","isSuccesful = ${it.isSuccessful}")
+
+            }
+            .addOnFailureListener {
+                Log.d("AUTHPENDING","Auth Pending.")
+                Log.d("AUTHFAILED","Exception = ${it.message}")
+                Log.d("AUTHFAILED","Exception = ${it.localizedMessage}")
+            }
+    }
+
+    private fun register() {
+        Log.d("REGISTER","Register Works")
+        createUSerInFirebase(
+            email = userAuthUIState.value.Email,
+            password = userAuthUIState.value.Password
+        )
     }
     private fun login() {
+        Log.d("LOGIN","LOGIN Works")
 
     }
     private fun printState(){

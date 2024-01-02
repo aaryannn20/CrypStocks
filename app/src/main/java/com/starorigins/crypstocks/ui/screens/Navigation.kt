@@ -27,7 +27,6 @@ sealed class Screen(val route: String) {
         icon = R.drawable.ic_profile
     )
 
-
     object StockDetail : Screen("stockDetail/{symbol}") {
         const val argument = "symbol"
         fun buildRoute(symbol: String) = "stockDetail/$symbol"

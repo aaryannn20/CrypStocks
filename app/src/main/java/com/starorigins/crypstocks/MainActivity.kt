@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
 import com.starorigins.crypstocks.data.datastore.SettingsDataStore
 import com.starorigins.crypstocks.ui.CrypStocksApp
+import com.starorigins.crypstocks.ui.TestApp
 import com.starorigins.crypstocks.ui.screens.stockdetail.StockDetailViewModelFactory
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
@@ -31,7 +32,8 @@ class MainActivity : ComponentActivity() {
         // Manually handle insets
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
-            CrypStocksApp(settings)
+//            CrypStocksApp(settings)
+            TestApp()
         }
     }
 }

@@ -1,26 +1,52 @@
 {
   "project_info": {
-    "project_number": "463089130052",
-    "project_id": "crypstocks-54ce6",
-    "storage_bucket": "crypstocks-54ce6.appspot.com"
+    "project_number": "528331822219",
+    "project_id": "crypstocks-afc33",
+    "storage_bucket": "crypstocks-afc33.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:463089130052:android:bc37d170e6283e11103a11",
+        "mobilesdk_app_id": "1:528331822219:android:a1c68c018d74fd9a11708e",
         "android_client_info": {
           "package_name": "com.starorigins.crypstocks"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "528331822219-2u36nvb2be37guodr5lf1qkqbb17sfqb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.starorigins.crypstocks",
+            "certificate_hash": "8c51ac2ea02c3f1798122c16b30f372d1a05e1dd"
+          }
+        },
+        {
+          "client_id": "528331822219-d0erf9b5kt0pn0loq9mtm35fpk93coq1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.starorigins.crypstocks",
+            "certificate_hash": "021142f8a4d111ecd744790fd233540acb3f82d2"
+          }
+        },
+        {
+          "client_id": "528331822219-d0d7gmoabmvbo2fqv0lbbi49qtg53s1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyBPFWuWOoELjwo4g1Kpa1RcJtRWYuzUMNY"
+          "current_key": "AIzaSyAOmuyJpwgOqKzPwavk4Xb1ntrWzSgyjMg"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528331822219-d0d7gmoabmvbo2fqv0lbbi49qtg53s1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

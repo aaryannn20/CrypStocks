@@ -59,6 +59,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.starorigins.crypstocks.R
 import com.starorigins.crypstocks.ui.theme.PrimaryColor
 
@@ -69,13 +70,13 @@ fun LogoContainer(image: Painter) {
 
 @Composable
 fun MyTextField(labelValue : String, leadIcon : Painter, onInput : (String) -> Unit) {
-    var username by remember {
+    var email by remember {
         mutableStateOf("")
     }
     TextField(
-        value = username,
+        value = email,
         onValueChange = {
-            username = it
+            email = it
             onInput(it) },
         placeholder = {
             Text(
@@ -265,7 +266,7 @@ fun LoginButton(onButtonClicked : () -> Unit) {
 }
 
 @Composable
-fun RouteLoginScreen() {
+fun RouteLoginScreen(navController: NavController) {
     ClickableText(
         text = buildAnnotatedString {
             withStyle(style = SpanStyle(
@@ -280,12 +281,14 @@ fun RouteLoginScreen() {
                 color = Color.Black,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold)) {append("?")}},
-        onClick = {}
+        onClick = {
+            navController.navigate("login")
+        }
     )
 }
 
 @Composable
-fun RouteSignUpScreen() {
+fun RouteSignUpScreen(navController: NavController) {
     ClickableText(
         text = buildAnnotatedString {
             withStyle(style = SpanStyle(
@@ -300,7 +303,9 @@ fun RouteSignUpScreen() {
                 color = Color.Black,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold)) {append("?")}},
-        onClick = {}
+        onClick = {
+            navController.navigate("register")
+        }
     )
 }
 
@@ -331,7 +336,7 @@ fun DividerComponent() {
 }
 
 @Composable
-fun DirectLoginFacilityRow() {
+fun DirectLoginFacilityRow(navController: NavController) {
     Row (modifier = Modifier.fillMaxWidth()) {
         Card(
             shape = RoundedCornerShape(14.dp),
@@ -382,6 +387,9 @@ fun DirectLoginFacilityRow() {
             shape = RoundedCornerShape(14.dp),
             modifier = Modifier
                 .shadow(elevation = 10.dp, shape = RoundedCornerShape(14.dp))
+                .clickable {
+                    navController.navigate("home")
+                }
         ) {
             Box(
                 modifier = Modifier
@@ -422,7 +430,6 @@ fun DefaultPreviewSystem() {
             MyTextField(labelValue = "Full Name", leadIcon = painterResource(id = R.drawable.profile), onInput = {})
             ContactField(labelValue = "Contact", leadIcon = painterResource(id = R.drawable.contact), onInput = {})
             MyCheckbox()
-            DirectLoginFacilityRow()
             PasswordField(labelValue = "Password", leadIcon = painterResource(id = R.drawable.password), onInput = {})
         }
     }

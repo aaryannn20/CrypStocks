@@ -12,6 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.starorigins.crypstocks.R
 import com.starorigins.crypstocks.ui.components.DirectLoginFacilityRow
 import com.starorigins.crypstocks.ui.components.DividerComponent
@@ -22,7 +23,7 @@ import com.starorigins.crypstocks.ui.components.PasswordField
 import com.starorigins.crypstocks.ui.components.RouteSignUpScreen
 
 @Composable
-fun LoginScreen(loginViewModel : UserAuthViewModel = viewModel()) {
+fun LoginScreen(loginViewModel : UserAuthViewModel = viewModel(), navController: NavController) {
     Surface(modifier = Modifier
         .fillMaxSize()
     ) {
@@ -31,7 +32,7 @@ fun LoginScreen(loginViewModel : UserAuthViewModel = viewModel()) {
             LogoContainer(image = painterResource(id = R.drawable.logo))
             Spacer(modifier = Modifier.height(32.dp))
             MyTextField(
-                labelValue = "Username",
+                labelValue = "Email",
                 leadIcon = painterResource(id = R.drawable.profile),
                 onInput = {
                     loginViewModel.onEvent(UserAuthEvents.UserNameChanged(it))
@@ -52,11 +53,11 @@ fun LoginScreen(loginViewModel : UserAuthViewModel = viewModel()) {
                 }
             )
             Spacer(modifier = Modifier.height(16.dp))
-            RouteSignUpScreen()
+            RouteSignUpScreen(navController)
             Spacer(modifier = Modifier.height(32.dp))
             DividerComponent()
             Spacer(modifier = Modifier.height(32.dp))
-            DirectLoginFacilityRow()
+            DirectLoginFacilityRow(navController)
         }
     }
 }
@@ -64,5 +65,4 @@ fun LoginScreen(loginViewModel : UserAuthViewModel = viewModel()) {
 @Preview
 @Composable
 fun DefaultLoginScreenPreview() {
-    LoginScreen()
 }
